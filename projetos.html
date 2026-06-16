@@ -43,7 +43,6 @@
   <!-- CONTEÚDO -->
   <section class="content">
 
-    <!-- CABEÇALHO: info esq | tabs centro | vazio dir -->
     <div class="proj-cabecalho">
       <div class="proj-cat-info" id="projCatInfo">
         <div class="proj-cat-info-titulo" id="catInfoTitulo"></div>
@@ -62,7 +61,7 @@
       <div class="proj-cabecalho-dir"></div>
     </div>
 
-    <!-- ÁREA PRINCIPAL: timeline esq + card-2 dir -->
+    <!-- ÁREA PRINCIPAL -->
     <div class="proj-area" id="projArea">
 
       <div class="proj-area-esquerda">
@@ -71,18 +70,23 @@
 
       <!-- CARD-2 -->
       <div class="proj-painel-lateral" id="projPainelLateral">
+
         <div class="proj-modal-header">
           <button class="proj-modal-fechar" id="projPainelFechar" aria-label="Fechar">✕</button>
-          <div class="proj-modal-meta"      id="modalMeta"></div>
-          <div class="proj-modal-nome"      id="modalNome"></div>
-          <div class="proj-modal-subtitulo" id="modalSubtitulo"></div>
-          <div class="proj-modal-badges"    id="modalBadges"></div>
+
+          <!-- coluna esquerda: meta + nome + subtitulo + badges -->
+          <div class="proj-modal-header-main">
+            <div class="proj-modal-meta"      id="modalMeta"></div>
+            <div class="proj-modal-nome"      id="modalNome"></div>
+            <div class="proj-modal-subtitulo" id="modalSubtitulo"></div>
+            <div class="proj-modal-badges"    id="modalBadges"></div>
+          </div>
+
+          <!-- coluna direita: empresa (cima) + metodologia (baixo) -->
+          <div class="proj-modal-contexto" id="modalContexto"></div>
         </div>
 
         <div class="proj-modal-corpo">
-          <div class="proj-modal-contexto" id="modalContexto"></div>
-          <hr class="proj-modal-divider"   id="modalCtxDivider">
-
           <div class="proj-modal-secao">
             <div class="proj-modal-secao-titulo">Sobre o projeto</div>
             <p id="modalDescricao"></p>
@@ -103,16 +107,33 @@
             <p id="modalAtuacao"></p>
           </div>
           <hr class="proj-modal-divider">
-          <div class="proj-modal-secao">
-            <div class="proj-modal-secao-titulo">Tecnologias</div>
-            <div class="proj-modal-stack" id="modalStack"></div>
+
+          <!-- TECNOLOGIAS + IMAGEM DO PROJETO lado a lado -->
+          <div class="proj-modal-rodape">
+            <div class="proj-modal-secao proj-modal-secao-stack">
+              <div class="proj-modal-secao-titulo">Tecnologias</div>
+              <div class="proj-modal-stack" id="modalStack"></div>
+            </div>
+
+            <!-- Box de imagem do projeto — abre lightbox ao clicar -->
+            <div class="proj-modal-img-box" id="modalImgBox">
+              <img id="modalImgThumb" src="" alt="Preview do projeto" onclick="abrirLightboxProjeto(this.src)">
+              <span class="proj-modal-img-label">Ver imagem</span>
+            </div>
           </div>
+
           <div class="proj-modal-links" id="modalLinks"></div>
         </div>
       </div>
 
     </div>
   </section>
+
+  <!-- LIGHTBOX DO PROJETO (mesmo padrão de competencias.html) -->
+  <div id="proj-lightbox" class="lightbox">
+    <span class="fechar" onclick="fecharLightboxProjeto()">&times;</span>
+    <img id="proj-lightbox-img" src="" alt="Imagem do projeto ampliada">
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -137,6 +158,23 @@
   <script src="js/script.js" defer></script>
   <script src="js/projetos-data.js"></script>
   <script>
+
+  /* ── Lightbox do projeto ─────────────────────────────────────────── */
+  function abrirLightboxProjeto(src) {
+    document.getElementById('proj-lightbox-img').src = src;
+    document.getElementById('proj-lightbox').style.display = 'flex';
+  }
+  function fecharLightboxProjeto() {
+    document.getElementById('proj-lightbox').style.display = 'none';
+  }
+  document.getElementById('proj-lightbox').addEventListener('click', function(e) {
+    if (e.target === this) fecharLightboxProjeto();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fecharLightboxProjeto();
+  });
+
+  /* ── App principal ───────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
 
     const container = document.getElementById('proj-paineis');
@@ -147,14 +185,12 @@
     let cardAtivo   = null;
     let slugAtivo   = null;
 
-    // ── Info da categoria ─────────────────────────────────────────────
     function atualizarCatInfo(cat) {
       const info = categoriaInfo[cat];
       document.getElementById('catInfoTitulo').textContent = info ? info.titulo : '';
       document.getElementById('catInfoTexto').textContent  = info ? info.texto  : '';
     }
 
-    // ── Renderiza painéis ─────────────────────────────────────────────
     const categorias = ['api', 'academico', 'pessoal'];
     atualizarCatInfo('api');
 
@@ -169,7 +205,7 @@
       const timeline = document.createElement('div');
       timeline.className = 'proj-timeline';
 
-      let idxGlobal = 0; // contador global — não reinicia por período
+      let idxGlobal = 0;
 
       periodos.forEach(function(periodo) {
         const projDosPeriodo = getPorCategoria(cat).filter(function(p) {
@@ -203,7 +239,6 @@
 
           const card = criarCard(proj);
 
-          // Contador global: par → direita | ímpar → esquerda
           if (idxGlobal % 2 === 0) {
             slotDir.appendChild(card);
           } else {
@@ -225,7 +260,6 @@
       container.appendChild(painelEl);
     });
 
-    // ── Cria card-1 ───────────────────────────────────────────────────
     function criarCard(proj) {
       const card = document.createElement('div');
       card.className = 'proj-card';
@@ -233,7 +267,7 @@
       card.innerHTML =
         '<div class="proj-card-nome">' + proj.nome + '</div>' +
         '<div class="proj-card-subtitulo">' + proj.subtitulo + '</div>' +
-        '<span class="proj-card-periodo">' + proj.periodo + ' · DSM</span>' +
+        '<span class="proj-card-periodo">' + (proj.semestre || proj.periodo) + '</span>' +
         (proj.funcao ? ' <span class="proj-card-funcao">' + proj.funcao + '</span>' : '') +
         '<p class="proj-card-descricao">' + proj.descricao + '</p>' +
         '<span class="proj-card-btn">Ver projeto</span>';
@@ -247,7 +281,6 @@
       return card;
     }
 
-    // ── Abre card-2 ───────────────────────────────────────────────────
     function abrirPainel(slug, card) {
       const p = getPorSlug(slug);
       if (!p) return;
@@ -265,7 +298,7 @@
 
       const catLabel = { api: 'API · Integrador', academico: 'Acadêmico', pessoal: 'Pessoal' };
       document.getElementById('modalMeta').textContent =
-        (catLabel[p.categoria] || p.categoria) + ' · ' + p.periodo + ' · DSM';
+        (catLabel[p.categoria] || p.categoria) + ' · ' + p.periodo + (p.semestre ? ' · ' + p.semestre : '');
       document.getElementById('modalNome').textContent      = p.nome;
       document.getElementById('modalSubtitulo').textContent = p.subtitulo;
 
@@ -284,22 +317,24 @@
         badgesEl.appendChild(b);
       });
 
-      const ctxEl      = document.getElementById('modalContexto');
-      const ctxDivider = document.getElementById('modalCtxDivider');
-      ctxEl.innerHTML  = '';
+      // ── Contexto na coluna direita do header ──────────────────────
+      const ctxEl     = document.getElementById('modalContexto');
+      ctxEl.innerHTML = '';
       if (p.empresa) {
         ctxEl.innerHTML +=
-          '<div class="proj-modal-ctx-item"><div class="proj-modal-ctx-label">Empresa parceira</div>' +
-          '<div class="proj-modal-ctx-valor">' + p.empresa + '</div></div>';
+          '<div class="proj-modal-ctx-item">' +
+            '<div class="proj-modal-ctx-label">Empresa parceira</div>' +
+            '<div class="proj-modal-ctx-valor">' + p.empresa + '</div>' +
+          '</div>';
       }
       if (p.metodologia) {
         ctxEl.innerHTML +=
-          '<div class="proj-modal-ctx-item"><div class="proj-modal-ctx-label">Metodologia</div>' +
-          '<div class="proj-modal-ctx-valor">' + p.metodologia + '</div></div>';
+          '<div class="proj-modal-ctx-item">' +
+            '<div class="proj-modal-ctx-label">Metodologia</div>' +
+            '<div class="proj-modal-ctx-valor">' + p.metodologia + '</div>' +
+          '</div>';
       }
-      const temCtx = ctxEl.innerHTML !== '';
-      ctxEl.style.display      = temCtx ? 'flex' : 'none';
-      ctxDivider.style.display = temCtx ? ''     : 'none';
+      ctxEl.style.display = ctxEl.innerHTML !== '' ? 'flex' : 'none';
 
       document.getElementById('modalDescricao').textContent = p.descricao;
       document.getElementById('modalProblema').textContent  = p.problema;
@@ -319,6 +354,17 @@
       document.getElementById('modalStack').innerHTML =
         p.stack.map(function(s) { return '<span>' + s + '</span>'; }).join('');
 
+      // ── Imagem do projeto ─────────────────────────────────────────
+      const imgBox   = document.getElementById('modalImgBox');
+      const imgThumb = document.getElementById('modalImgThumb');
+      if (p.imagem) {
+        imgThumb.src          = p.imagem;
+        imgThumb.alt          = 'Preview — ' + p.nome;
+        imgBox.style.display  = 'flex';
+      } else {
+        imgBox.style.display  = 'none';
+      }
+
       const linksEl = document.getElementById('modalLinks');
       linksEl.innerHTML = '';
       if (p.links && p.links.github) {
@@ -335,7 +381,6 @@
       painel.scrollTop = 0;
     }
 
-    // ── Fecha card-2 ──────────────────────────────────────────────────
     function fecharPainel() {
       painel.classList.remove('aberto');
       area.classList.remove('card2-aberto');
@@ -354,6 +399,7 @@
       if (!painel.classList.contains('aberto')) return;
       if (painel.contains(e.target)) return;
       if (e.target.closest('.proj-card')) return;
+      fecharLightboxProjeto(); // fecha lightbox se aberto
       fecharPainel();
     });
 
@@ -361,7 +407,6 @@
       if (e.key === 'Escape') fecharPainel();
     });
 
-    // ── Troca tabs ────────────────────────────────────────────────────
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() {
         tabs.forEach(function(t) { t.classList.remove('ativo'); });
@@ -375,7 +420,6 @@
       });
     });
 
-    // ── Nav ativo + ano ───────────────────────────────────────────────
     const current = window.location.pathname.split('/').pop();
     document.querySelectorAll('.navbar .nav-link').forEach(function(link) {
       if (link.getAttribute('href') === current) link.classList.add('active');

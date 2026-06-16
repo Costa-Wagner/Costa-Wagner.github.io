@@ -13,7 +13,7 @@
   --proj-badge-bg:     rgba(91, 138, 181, 0.15);
   --proj-badge-border: #f2dbc8;
   --proj-badge-color:  #1a3a5c;
-  --proj-timeline-line: #b0b8c9;  /* linha visível sobre #e6e3e3 */
+  --proj-timeline-line: #b0b8c9;
 }
 
 section.content {
@@ -28,7 +28,7 @@ section.content {
 .proj-painel.ativo  { display: block; }
 
 /* ══════════════════════════════════════
-   CABEÇALHO — sticky, não se mexe ao trocar aba
+   CABEÇALHO — sticky
    ══════════════════════════════════════ */
 .proj-cabecalho {
   display: grid;
@@ -43,19 +43,17 @@ section.content {
   padding-bottom: 0;
 }
 
-/* INFO DA CATEGORIA — coluna esquerda, estica até a base das tabs */
 .proj-cat-info {
-  background: var(--proj-bg);
-  border: 1px solid var(--proj-border);
-  border-left: 3px solid var(--proj-accent);
-  border-radius: 0 8px 8px 0;
-  padding: 0.75rem 1rem;
+  background: var;
+  border-left: 2px solid var(--proj-accent);
+  padding: 0rem 0.7rem;
   box-sizing: border-box;
-  /* ocupa toda a altura da linha do grid */
   align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 8px;
+  text-align: justify;
 }
 
 .proj-cat-info-titulo {
@@ -74,7 +72,6 @@ section.content {
   margin: 0;
 }
 
-/* CENTRO — subtítulo + tabs */
 .proj-cabecalho-centro {
   text-align: center;
   display: flex;
@@ -88,7 +85,7 @@ section.content {
   margin: 0 0 0.75rem 0;
 }
 
-.proj-cabecalho-dir { /* vazio — mantém tabs centradas */ }
+.proj-cabecalho-dir { /* vazio */ }
 
 /* ── TABS ──────────────────────────────────────────────────────────── */
 .proj-tabs {
@@ -128,18 +125,15 @@ section.content {
   gap: 1.5rem;
   align-items: flex-start;
   padding: 1.5rem 2rem;
-  /* centraliza a timeline quando card-2 fechado */
   justify-content: center;
 }
 
-/* Coluna da timeline — centralizada, maior */
 .proj-area-esquerda {
-  flex: 0 0 720px;   /* dobro do anterior (~420) */
+  flex: 0 0 720px;
   min-width: 0;
   transition: flex-basis 0.35s ease;
 }
 
-/* Card-2 aberto: timeline recua para a esquerda */
 .proj-area.card2-aberto {
   justify-content: flex-start;
 }
@@ -156,7 +150,6 @@ section.content {
   padding: 0.5rem 0;
 }
 
-/* Linha vertical central — cor visível sobre o fundo cinza */
 .proj-timeline::before {
   content: '';
   position: absolute;
@@ -169,7 +162,6 @@ section.content {
   transition: left 0.35s ease, transform 0.35s ease;
 }
 
-/* Card-2 aberto: linha migra para esquerda */
 .proj-area.card2-aberto .proj-timeline::before {
   left: 14px;
   transform: none;
@@ -179,11 +171,10 @@ section.content {
   margin-bottom: 2rem;
 }
 
-/* Label do período — dot na linha + texto à direita */
 .proj-periodo-label {
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* alinha à esquerda do centro */
+  justify-content: flex-start;
   gap: 0.5rem;
   font-size: 0.7rem;
   font-weight: 700;
@@ -193,8 +184,7 @@ section.content {
   margin-bottom: 1rem;
   position: relative;
   z-index: 2;
-  /* posiciona o label alinhado com a linha central */
-  padding-left: calc(50% - 5px); /* desloca o dot para cima da linha */
+  padding-left: calc(50% - 5px);
   transition: padding-left 0.35s ease;
 }
 
@@ -220,15 +210,13 @@ section.content {
   gap: 1rem;
 }
 
-/* Item: slot-esq | dot | slot-dir */
 .proj-timeline-item {
   display: grid;
   grid-template-columns: 1fr 28px 1fr;
-  align-items: flex-start;   /* era center — com flex-start os slots não colapsam */
+  align-items: flex-start;
   position: relative;
 }
 
-/* Ponto central */
 .proj-timeline-dot {
   width: 12px;
   height: 12px;
@@ -237,12 +225,12 @@ section.content {
   border: 2px solid var(--proj-accent);
   box-shadow: 0 0 0 2px rgba(21,101,192,0.2);
   justify-self: center;
-  align-self: center;      /* dot fica centralizado verticalmente no card */
+  align-self: center;
   position: relative;
   z-index: 2;
   transition: background 0.15s;
   flex-shrink: 0;
-  margin-top: 1rem;        /* aproxima do topo do card */
+  margin-top: 1rem;
 }
 
 .proj-timeline-item.ativo .proj-timeline-dot,
@@ -250,7 +238,6 @@ section.content {
   background: var(--proj-accent);
 }
 
-/* Slots */
 .proj-timeline-slot-esq {
   padding-right: 0.75rem;
   display: flex;
@@ -264,10 +251,9 @@ section.content {
   align-items: flex-start;
 }
 
-/* ── Card-2 aberto: todos os cards migram para o slot DIREITO ────── */
 .proj-area.card2-aberto .proj-timeline-item {
   display: grid;
-  grid-template-columns: 28px 28px 1fr; /* linha | dot | card-dir */
+  grid-template-columns: 28px 28px 1fr;
   align-items: flex-start;
   padding-left: 0;
 }
@@ -279,7 +265,6 @@ section.content {
   margin-top: 1rem;
 }
 
-/* slot esquerdo vira espaço mínimo (só a linha passa por trás) */
 .proj-area.card2-aberto .proj-timeline-slot-esq {
   padding: 0;
   display: flex;
@@ -287,18 +272,14 @@ section.content {
 }
 
 .proj-area.card2-aberto .proj-timeline-slot-esq > * {
-  /* esconde qualquer card que estava no slot esq */
   display: none;
 }
 
-/* slot direito recebe todos os cards */
 .proj-area.card2-aberto .proj-timeline-slot-dir {
   padding-left: 0.75rem;
   display: flex;
 }
 
-/* cards que estavam no slot esq são movidos via JS para o slot dir;
-   mas como o HTML não muda, escondemos o slot-esq vazio */
 .proj-area.card2-aberto .proj-timeline-slot-esq:empty {
   display: none;
 }
@@ -338,8 +319,6 @@ section.content {
   margin-bottom: 0.5rem;
   line-height: 1.3;
 }
-
-/* sem alterações no card-1 quando card-2 está aberto */
 
 .proj-card-funcao {
   display: inline-block;
@@ -425,16 +404,86 @@ section.content {
   opacity: 1;
 }
 
-/* Header fixo do card-2 */
+/* ── Header do card-2: duas colunas ───────────────────────────────── */
 .proj-modal-header {
   background: linear-gradient(135deg, #1a3a5c 0%, #1565c0 100%);
-  padding: 0.75rem 1.25rem 0.65rem;
+  padding: 0.75rem 1.25rem 0.75rem;
   border-radius: 12px 12px 0 0;
   flex-shrink: 0;
   position: relative;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+
+  /* layout de duas colunas: info principal | contexto */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  column-gap: 1rem;
+  align-items: center;
 }
+
+/* Coluna esquerda: empilha meta + nome + subtitulo + badges */
+.proj-modal-header-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Coluna direita: contexto empilhado verticalmente */
+.proj-modal-contexto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  align-self: center;
+  /* empurra para não colidir com o botão fechar */
+  padding-right: 2rem;
+}
+
+.proj-modal-ctx-item {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 8px;
+  padding: 0.3rem 0.7rem;
+  min-width: 130px;
+}
+
+.proj-modal-ctx-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.1rem;
+}
+
+.proj-modal-ctx-valor {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Botão fechar — sempre no canto superior direito */
+.proj-modal-fechar {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.85rem;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  z-index: 2;
+}
+
+.proj-modal-fechar:hover { background: rgba(255,255,255,0.3); }
 
 .proj-modal-meta {
   font-size: 0.62rem;
@@ -446,11 +495,14 @@ section.content {
 }
 
 .proj-modal-nome {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 0.1rem;
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .proj-modal-subtitulo {
@@ -481,26 +533,6 @@ section.content {
   color: #fff;
 }
 
-.proj-modal-fechar {
-  position: absolute;
-  top: 0.875rem;
-  right: 1rem;
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: #fff;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s;
-}
-
-.proj-modal-fechar:hover { background: rgba(255,255,255,0.3); }
-
 /* Corpo do card-2 */
 .proj-modal-corpo {
   flex: 1 1 auto;
@@ -509,35 +541,6 @@ section.content {
   flex-direction: column;
   gap: 0.4rem;
   overflow: hidden;
-}
-
-.proj-modal-contexto {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  flex-shrink: 0;
-}
-
-.proj-modal-ctx-item {
-  background: var(--proj-bg);
-  border: 1px solid var(--proj-border);
-  border-radius: 8px;
-  padding: 0.3rem 0.6rem;
-}
-
-.proj-modal-ctx-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--proj-muted);
-  margin-bottom: 0.1rem;
-}
-
-.proj-modal-ctx-valor {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--proj-text);
 }
 
 .proj-modal-secao {
@@ -636,7 +639,7 @@ section.content {
   .proj-cabecalho {
     grid-template-columns: 1fr;
     padding: 1rem;
-    position: static; /* remove sticky em mobile */
+    position: static;
   }
 
   .proj-cabecalho-dir { display: none; }
@@ -682,7 +685,7 @@ section.content {
   }
 
   .proj-timeline-slot-esq > * {
-    display: block !important; /* mostra cards do slot-esq em mobile */
+    display: block !important;
   }
 
   .proj-timeline-slot-esq:empty,
@@ -702,7 +705,27 @@ section.content {
   }
 
   .proj-painel-lateral.aberto { opacity: 1; }
-  .proj-modal-header { border-radius: 0; }
+
+  /* Em mobile: header volta para coluna única */
+  .proj-modal-header {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+  }
+
+  .proj-modal-contexto {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-right: 0;
+    margin-top: 0.6rem;
+  }
+
+  .proj-modal-ctx-item {
+    min-width: unset;
+  }
+
+  .proj-modal-nome {
+    white-space: normal;
+  }
 
   .proj-tabs {
     overflow-x: auto;
@@ -714,3 +737,89 @@ section.content {
     padding: 0.55rem 1rem;
   }
 }
+
+/* ══════════════════════════════════════
+   RODAPÉ DO CARD-2: tecnologias + imagem lado a lado
+   ══════════════════════════════════════ */
+.proj-modal-rodape {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.proj-modal-secao-stack {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Box de preview da imagem do projeto */
+.proj-modal-img-box {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.proj-modal-img-box img {
+  width: 110px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 7px;
+  border: 2px solid var(--proj-border);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  display: block;
+}
+
+.proj-modal-img-box img:hover {
+  border-color: var(--proj-accent);
+  box-shadow: 0 4px 14px rgba(21,101,192,0.18);
+  transform: translateY(-2px);
+}
+
+.proj-modal-img-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--proj-accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════
+   LIGHTBOX DO PROJETO
+   (mesmo padrão de competencias.html)
+   ══════════════════════════════════════ */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 88vh;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  object-fit: contain;
+}
+
+.lightbox .fechar {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+  user-select: none;
+}
+
+.lightbox .fechar:hover { opacity: 1; }
