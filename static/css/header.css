@@ -16,7 +16,7 @@ section.content header h2 {
   padding: 15px;
   margin: 0px auto 20px auto;
   text-align: center;
-  color: #333;
+  color: #333333;
 }
 
 header.hero h1 {
@@ -66,12 +66,40 @@ header.hero h1 {
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
   header.hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+  }
+
+  header.hero h1 {
+    font-size: 1.3em;
+  }
+
+  .navbar {
+    width: auto;
+    margin-left: auto;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
   }
 
   .navbar-nav .nav-link {
-    margin: 5px 0;
+    margin: 0;
+    padding: 4px 14px;
+    text-align: right;
+  }
+
+  /* Menu expandido ocupa linha inteira abaixo, alinhado à direita */
+  .navbar-collapse {
+    flex-basis: 100%;
+    background-color: #222;
+    padding: 4px 0;
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
   }
 }

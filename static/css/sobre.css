@@ -108,12 +108,15 @@ section.content {
   .sobre-container {
     flex-direction: column;
     align-items: center;
+    padding-left: 45px;
+    padding-right: 45px;
   }
 
   .sobre-texto {
     flex: 1 1 100%;
     text-align: center;
     padding: 0px;
+    padding-right: 0;
   }
 
   .flip-card {
@@ -133,5 +136,14 @@ section.content {
 
   .sobre-texto {
     font-size: 16px;
+  }
+
+  .flip-card-back h3 {
+    font-size: 14px;
+  }
+
+  .flip-card-back p {
+    font-size: 11px;
+    line-height: 1.6;
   }
 }

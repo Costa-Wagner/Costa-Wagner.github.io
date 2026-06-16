@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="static/css/content.css">
   <link rel="stylesheet" href="static/css/footer.css">
   <link rel="stylesheet" href="static/css/eventos.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -53,6 +56,19 @@
              
         <div class="eventos-carousel-wrapper">
           <div class="row" id="eventosRow">
+
+            <div class="col-md-4 mb-4">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
+                <img src="static/imagem/imagens/26.05.MAI/2.png" class="img-fluid projeto-img" alt="Evento"
+                  onclick="abrirLightbox(this.src)">
+                <h3>Apresentação da 3º Sprint da API</h3>
+                <h4>- FATEC · AKAER -</h4>
+                <h5>Mai/2026</h5>
+                <p>
+                  Apresentação da última Sprint do projeto, que consistiu no desenvolvimento de uma plataforma web para gestão de requisitos normativos aeronáuticos. A solução foi desenvolvida para apoiar e facilitar os engenheiros e especialistas na melhor organização e rastreabilidade na consulta normas regulatórias durante o desenvolvimento dos projetos aeronáuticos da empresa.
+                </p>
+              </div>
+            </div>
 
             <div class="col-md-4 mb-4">
               <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
@@ -107,7 +123,7 @@
             </div>
               
             <div class="col-md-4 mb-4">
-              <div class="contact-box">
+              <div class="contact-box" onclick="abrirLightbox(this.querySelector('img').src)">
                 <img src="static/imagem/imagens/25.10.OUT/pyday_2.jpeg" 
                       class="img-fluid projeto-img" 
                       alt="Evento" 
@@ -304,6 +320,17 @@
   </script>
 
   <script src="js/script.js" defer></script>
+  <script>
+    document.addEventListener('click', function(e) {
+      var navbar = document.getElementById('collapsibleNavbar');
+      var toggler = document.querySelector('.navbar-toggler');
+      if (navbar.classList.contains('show') &&
+          !navbar.contains(e.target) &&
+          !toggler.contains(e.target)) {
+        $(toggler).click();
+      }
+    });
+  </script>
 
 </body>
 

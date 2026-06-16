@@ -1,78 +1,105 @@
 /* ══════════════════════════════════════
-   competencia.css — Wagner Gonçalves Costa
+   competencias.css — Wagner Gonçalves Costa
    ══════════════════════════════════════ */
-.contact-box {
+
+/*     <div class="competencias-main">
+        <h4 class="certificados-titulo">Cursos Realizados</h4>
+
+/* ── Layout principal ── */
+section.content {
+  background-color: #e6e3e3;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  border: 2px solid #ccc;
-  padding: 15px;
-  border-radius: 12px;
-  background: #f9f9f9;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  padding-bottom: 0;
+  position: relative;
 }
 
+section.content > header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+section.content > header h2 {
+  margin-bottom: 10px;
+}
+
+.competencias-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Área principal (cursos) ── */
+.competencias-main {
+  flex: 1;
+  padding: 0 60px;
+  overflow-y: auto;
+  padding-right: 240px;
+}
+
+.container {
+  padding-top: 8px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* ── Títulos ── */
 .certificados-titulo {
   color: #086aeb;
   font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
+  margin-bottom: 15px;
+  text-align: left;
   font-size: 18px;
   text-transform: uppercase;
 }
 
-section.content {
-  background-color: #e6e3e3;
-  flex: 1;
+/* ── Cards de certificados ── */
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #ccc;
+  padding: 8px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 340px;
 }
 
 .contact-box:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .projeto-img {
   width: 100%;
-  height: 200px;
-  margin-bottom: 12px;
+  height: 220px;
+  margin-bottom: 8px;
   border-radius: 8px;
   object-fit: cover;
-  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
 .contact-box h3 {
-  margin: 0;
+  margin: 0 0 4px;
   font-size: 15px;
   font-weight: bold;
   color: #086aeb;
   text-align: center;
-  margin-bottom: 4px;
-}
-
-.contact-box h4 {
-  font-size: 14px;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 2px;
-}
-
-.contact-box h5 {
-  font-size: 12px;
-  font-weight: 400; 
-  color: #686868;
-  margin-bottom: 8px;
 }
 
 .contact-box p {
-  font-size: 13px;
+  font-size: 12px;
   color: #555;
   text-align: justify;
   line-height: 1.6;
-  margin-top: 10px;
+  margin-top: 4px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .btn-certificado {
@@ -80,7 +107,8 @@ section.content {
   background-color: #086aeb;
   border: none;
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 4px 10px;
+  font-size: 13px;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -89,65 +117,66 @@ section.content {
   transform: translateY(-2px);
 }
 
-/* ======================== FERRAMENTAS EM ANÁLISE (ABAIXO) ========================
-/* SubTítulos */
+/* ── Sidebar ferramentas ── */
+.competencias-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: #99bdec4f;
+  border: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .ferramentas-titulo {
   color: #086aeb;
   font-weight: bold;
-  margin-bottom: 18px;
-  text-align: center;
   font-size: 18px;
   text-transform: uppercase;
-}
-
-.contact-box:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  text-decoration: none;
-}
-
-/* ========== Seção de Ferramentas ========== */
-
-.ferramentas-section {
+  text-align: center;
+  margin: 0;
+  padding: 12px 8px;
   background: #99bdec4f;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.ferramentas-sidebar-scroll {
+  overflow: hidden;
+  flex: 1;
+}
+
+.ferramentas-sidebar-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
-  overflow: hidden; /* ✅ necessário para esconder o loop */
-  position: relative;
+  gap: 20px;
+  padding: 12px 0;
+  animation: scroll-vertical 20s linear infinite;
 }
 
-/* ======= Trilha de rolagem ======= */
-.ferramentas-track {
-  display: flex;
-  width: calc(200%); /* duplicação para rolagem contínua */
-  animation: scroll 40s linear infinite;
-}
-
-/* pausa a rolagem ao passar o mouse */
-.ferramentas-section:hover .ferramentas-track {
+.competencias-sidebar:hover .ferramentas-sidebar-grid {
   animation-play-state: paused;
 }
 
-.ferramentas-track.active {
-  cursor: grabbing;
+@keyframes scroll-vertical {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
-/* Grid horizontal dos boxes (duplicado dentro da track) */
-.ferramentas-grid {
+.ferramentas-sidebar-row {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 0 15px;
 }
 
-/* Box circular */
+/* ── Badge circular ── */
 .ferramenta-box {
   flex: 0 0 auto;
   width: 70px;
@@ -172,133 +201,22 @@ section.content {
   width: 35px;
   height: 35px;
   object-fit: contain;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .ferramenta-box p {
   margin: 0;
   font-weight: bold;
-  font-size: 9px;
+  font-size: 10px;
   text-align: center;
 }
 
-/* ======= NOVO: animação de esteira ======= */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
-/* ========== Responsividade ========== */
-@media (max-width: 992px) {
-  .contact-box {
-    flex: 1 1 48%;
-    max-width: 48%;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-box {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-  .ferramentas-grid {
-    justify-content: center;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 576px) {
-  .ferramenta-box {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-
-
-/* ======================== FERRAMENTAS EM ANÁLISE (ACIMA) ========================
-
-
-
-/* ========== Carrossel ========== */
-/* Container do carrossel */
-.eventos-carousel-container {
-  position: relative;
-  margin: 0 auto;
-}
-
-/* Wrapper para overflow */
-.eventos-carousel-wrapper {
-  overflow: hidden;
-  padding: 0 15px;
-}
-
-/* Row com transição */
-.eventos-carousel-wrapper .row {
-  transition: transform 0.5s ease-in-out;
-  flex-wrap: nowrap;
-}
-
-/* Botões de navegação - FIXOS */
-.carousel-nav-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid #007bff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.8rem;
-  color: #007bff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  line-height: 1;
-}
-
-.carousel-nav-btn:hover:not(:disabled) {
-  background: #007bff;
-  color: white;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.carousel-nav-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  border-color: #ccc;
-  color: #ccc;
-}
-
-.carousel-nav-btn.prev {
-  left: -60px;
-}
-
-.carousel-nav-btn.next {
-  right: -60px;
-}
-
-/* ========== Lightbox ========== */
+/* ── Lightbox ── */
 .lightbox {
   display: none;
   position: fixed;
   z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
@@ -327,44 +245,77 @@ section.content {
   color: #ccc;
 }
 
-/* ========== Responsividade ========== */
 @media (max-width: 768px) {
-  .projeto-img {
-    height: 180px;
+  .projeto-img { height: 100px; }
+
+  /* ── Centraliza área de cursos ── */
+  .competencias-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .competencias-main {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .certificados-titulo {
+    text-align: center;
+  }
+
+  .contact-box {
+    align-items: center;
+    min-height: 220px;
+  }
+
+  /* ── Sidebar vira carrossel automático ── */
+  .competencias-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border: none;
+    border-top: 2px solid #ccc;
+  }
+
+  .ferramentas-sidebar-scroll {
+    overflow: hidden;
+  }
+ 
+  .ferramentas-sidebar-grid {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 10px 0;
+    gap: 12px;
+    width: max-content;
+    animation: scroll-horizontal 35s linear infinite;
+  }
+
+  .competencias-sidebar:hover .ferramentas-sidebar-grid {
+    animation-play-state: paused;
+  }
+
+  .ferramentas-sidebar-row {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  /* ── Badges menores ── */
+  .ferramenta-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ferramenta-box img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .ferramenta-box p {
+    font-size: 7px;
   }
 }
 
-@media (max-width: 576px) {
-  .projeto-img {
-    height: 160px;
-  }
+@keyframes scroll-horizontal {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-
-/* ========== Responsividade - Carrossel ========== */
-
-@media (max-width: 1400px) {
-  .carousel-nav-btn.prev {
-    left: -25px;
-  }
-  
-  .carousel-nav-btn.next {
-    right: -25px;
-  }
-}
-
-@media (max-width: 767px) {
-  .carousel-nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-  
-  .carousel-nav-btn.prev {
-    left: 0;
-  }
-  
-  .carousel-nav-btn.next {
-    right: 0;
-  }
-}
-

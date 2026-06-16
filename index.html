@@ -55,7 +55,7 @@
       </nav>
     </header>
 
-    <!-- CONTEÚDO -->
+    <!-- CONTEÚDO --> 
     <section class="content">
       <header>
         <h2>Sobre Mim</h2>
@@ -129,12 +129,22 @@
     <!-- MARCAR A PÁGINA ATUAL -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
+        // Marcar página atual
         const currentPage = window.location.pathname.split("/").pop();
-        const navLinks = document.querySelectorAll(".navbar .nav-link");
-
-        navLinks.forEach(link => {
+        document.querySelectorAll(".navbar .nav-link").forEach(link => {
           if (link.getAttribute("href") === currentPage) {
             link.classList.add("active");
+          }
+        });
+
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(e) {
+          var navbar = document.getElementById('collapsibleNavbar');
+          var toggler = document.querySelector('.navbar-toggler');
+          if (navbar.classList.contains('show') &&
+              !navbar.contains(e.target) &&
+              !toggler.contains(e.target)) {
+            $(toggler).click();
           }
         });
       });

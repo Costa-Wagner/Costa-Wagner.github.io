@@ -1,290 +1,389 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos - Wagner Costa</title>
 
-    <title>Projetos - Wagner Costa</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/base.css">
+  <link rel="stylesheet" href="static/css/header.css">
+  <link rel="stylesheet" href="static/css/content.css">
+  <link rel="stylesheet" href="static/css/footer.css">
+  <link rel="stylesheet" href="static/css/projetos.css">
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    >
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
 
-    <!-- CSS principais -->
-    <link rel="stylesheet" href="static/css/base.css">
-    <link rel="stylesheet" href="static/css/header.css">
-    <link rel="stylesheet" href="static/css/content.css">
-    <link rel="stylesheet" href="static/css/footer.css">
-    <link rel="stylesheet" href="static/css/projetos.css">
+  <!-- HEADER -->
+  <header class="hero">
+    <div class="hero-left">
+      <h1>Wagner Costa</h1>
+    </div>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
+          <li class="nav-item"><a class="nav-link" href="competencias.html">Competências</a></li>
+          <li class="nav-item"><a class="nav-link" href="eventos.html">Eventos</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">C.V.</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-  <body>
-    <!-- HEADER -->
-    <header class="hero">
-      <div class="hero-left">
-        <h1>Wagner Costa</h1>
+  <!-- CONTEÚDO -->
+  <section class="content">
+
+    <!-- CABEÇALHO: info esq | tabs centro | vazio dir -->
+    <div class="proj-cabecalho">
+      <div class="proj-cat-info" id="projCatInfo">
+        <div class="proj-cat-info-titulo" id="catInfoTitulo"></div>
+        <p class="proj-cat-info-texto" id="catInfoTexto"></p>
       </div>
 
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="index.html">Sobre</a></li>
-            <li class="nav-item"><a class="nav-link" href="projetos.html">Projetos</a></li>
-            <li class="nav-item"><a class="nav-link" href="competencias.html">Competências</a></li>
-            <li class="nav-item"><a class="nav-link" href="eventos.html">Eventos</a></li>
-            <li class="nav-item"><a class="nav-link" href="cv.html">C.V.</a></li>
-            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-          </ul>
-        </div>  
-      </nav>
-    </header>
+      <div class="proj-cabecalho-centro">
+        <div class="proj-tabs" role="tablist">
+          <button class="proj-tab ativo" data-categoria="api"       role="tab">API · Integrador</button>
+          <button class="proj-tab"       data-categoria="academico" role="tab">Acadêmico</button>
+          <button class="proj-tab"       data-categoria="pessoal"   role="tab">Pessoal</button>
+        </div>
+        <p class="proj-page-subtitulo">Trajetória de aprendizagem — projetos organizados por contexto e período.</p>
+      </div>
 
-    <!-- CONTEÚDO -->
-    <section class="content">
-      <header>
-        <h2>Projetos</h2>
-      </header>
+      <div class="proj-cabecalho-dir"></div>
+    </div>
 
-      <div class="container-fluid px-4">
-        <div class="projetos-grid">
+    <!-- ÁREA PRINCIPAL: timeline esq + card-2 dir -->
+    <div class="proj-area" id="projArea">
 
-          <div class="projeto-card" onclick="abrirModal('api2')">
-            <img src="static/imagem/imagens/proj_2_api.jpg" class="projeto-card-thumb" alt="Projeto API">
-            <div class="projeto-card-body">
-              <h3>Aprendizagem por Projeto Integrador</h3>
-              <p>Plataforma web para gestão normativa com filtros avançados e controle de acesso multinível.</p>
-              <span class="projeto-badge">2º sem · DSM</span>
-              <span class="projeto-badge">DevTeam · FrontEnd</span>
-            </div>
-          </div>
+      <div class="proj-area-esquerda">
+        <div id="proj-paineis"></div>
+      </div>
 
-          <div class="projeto-card" onclick="abrirModal('cli')">
-            <img src="static/imagem/imagens/proj_1_cli.jpg" class="projeto-card-thumb" alt="Projeto CLI">
-            <div class="projeto-card-body">
-              <h3>Projeto Acadêmico · CLI</h3>
-              <p>Sistema em Linha de Comando simulando um processo de produção.</p>
-              <span class="projeto-badge">2º sem · DSM</span>
-            </div>
-          </div>
-
-          <div class="projeto-card" onclick="abrirModal('api1')">
-            <img src="static/imagem/imagens/proj_1_api.jpg" class="projeto-card-thumb" alt="Projeto API">
-            <div class="projeto-card-body">
-              <h3>Aprendizagem por Projeto Integrador</h3>
-              <p>Dashboard para visualização dos dados do CENSO 2010/2022.</p>
-              <span class="projeto-badge">1º sem · DSM</span>
-              <span class="projeto-badge">Product Owner</span>
-            </div>
-          </div>
-
-          <div class="projeto-card" onclick="abrirModal('pessoal')">
-            <img src="static/imagem/imagens/proj_2_site.jpg" class="projeto-card-thumb" alt="Site Particular">
-            <div class="projeto-card-body">
-              <h3>Projeto Acadêmico · Site Particular</h3>
-              <p>Desenvolvimento web pessoal com foco em UX e design digital.</p>
-              <span class="projeto-badge">1º sem · DSM</span>
-            </div>
-          </div>
-
+      <!-- CARD-2 -->
+      <div class="proj-painel-lateral" id="projPainelLateral">
+        <div class="proj-modal-header">
+          <button class="proj-modal-fechar" id="projPainelFechar" aria-label="Fechar">✕</button>
+          <div class="proj-modal-meta"      id="modalMeta"></div>
+          <div class="proj-modal-nome"      id="modalNome"></div>
+          <div class="proj-modal-subtitulo" id="modalSubtitulo"></div>
+          <div class="proj-modal-badges"    id="modalBadges"></div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal-overlay" id="modalOverlay" onclick="fecharModal(event)">
-          <div class="modal-proj">
-            <button class="modal-proj-close" onclick="fecharModal()">✕</button>
-            <img id="modalImg" src="" class="modal-proj-img" alt="">
-            <h2 id="modalTitulo"></h2>
-            <h4 id="modalSubtitulo" class="modal-subtitulo"></h4>
-            <p id="modalDesc"></p>
-            <p id="modalSubdesc"></p>
-            <div class="modal-tags" id="modalTags"></div>
-            <a id="modalLink" href="#" target="_blank" class="modal-btn">Ver projeto ↗</a>
+        <div class="proj-modal-corpo">
+          <div class="proj-modal-contexto" id="modalContexto"></div>
+          <hr class="proj-modal-divider"   id="modalCtxDivider">
+
+          <div class="proj-modal-secao">
+            <div class="proj-modal-secao-titulo">Sobre o projeto</div>
+            <p id="modalDescricao"></p>
           </div>
+          <hr class="proj-modal-divider">
+          <div class="proj-modal-secao">
+            <div class="proj-modal-secao-titulo">Problema</div>
+            <p id="modalProblema"></p>
+          </div>
+          <hr class="proj-modal-divider">
+          <div class="proj-modal-secao">
+            <div class="proj-modal-secao-titulo">Solução</div>
+            <p id="modalSolucao"></p>
+          </div>
+          <hr class="proj-modal-divider" id="modalAtuacaoDivider">
+          <div class="proj-modal-secao"  id="modalAtuacaoBloco">
+            <div class="proj-modal-secao-titulo">Minha atuação</div>
+            <p id="modalAtuacao"></p>
+          </div>
+          <hr class="proj-modal-divider">
+          <div class="proj-modal-secao">
+            <div class="proj-modal-secao-titulo">Tecnologias</div>
+            <div class="proj-modal-stack" id="modalStack"></div>
+          </div>
+          <div class="proj-modal-links" id="modalLinks"></div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div style="position:absolute; left:20px; top:50%; transform: translateY(-50%); display:flex; gap:15px; align-items:center;">
-        <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle">
-          <img src="static/imagem/logos/GitHub.png" alt="GitHub">
-        </a>
-        <a href="https://linkedin.com/in/costa-wagner/" target="_blank" class="icon-circle">
-          <img src="static/imagem/logos/Linkedin.jpg" alt="LinkedIn">
-        </a>
-        <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle">
-          <img src="static/imagem/logos/whatsapp.png" alt="WhatsApp">
-        </a>
       </div>
 
-      <div style="text-align:center; flex:1;">
-        <h3>WGCosta</h3>
-        <p>Aprendendo. Construindo. Evoluindo.</p>
-        <p>&copy; <span id="ano"></span> - Todos os direitos reservados.</p>
-      </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="js/script.js" defer></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div style="position:absolute; left:20px; top:50%; transform:translateY(-50%); display:flex; gap:15px; align-items:center;">
+      <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle">
+        <img src="static/imagem/logos/GitHub.png" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle">
+        <img src="static/imagem/logos/Linkedin.jpg" alt="LinkedIn">
+      </a>
+      <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle">
+        <img src="static/imagem/logos/whatsapp.png" alt="WhatsApp">
+      </a>
+    </div>
+    <div style="text-align:center; flex:1;">
+      <h3>WGCosta</h3>
+      <p>Aprendendo. Construindo. Evoluindo.</p>
+      <p>&copy; <span id="ano"></span> - Todos os direitos reservados.</p>
+    </div>
+  </footer>
 
-    <!-- MARCAR A PÁGINA ATUAL -->
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          const currentPage = window.location.pathname.split("/").pop();
-          const navLinks = document.querySelectorAll(".navbar .nav-link");
+  <script src="js/script.js" defer></script>
+  <script src="js/projetos-data.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
 
-          navLinks.forEach(link => {
-            if (link.getAttribute("href") === currentPage) {
-              link.classList.add("active");
-            }
-          });
-        });
-      </script>
+    const container = document.getElementById('proj-paineis');
+    const tabs      = document.querySelectorAll('.proj-tab');
+    const area      = document.getElementById('projArea');
+    const painel    = document.getElementById('projPainelLateral');
+    const btnFechar = document.getElementById('projPainelFechar');
+    let cardAtivo   = null;
+    let slugAtivo   = null;
 
-      <script>
-        const track = document.querySelector('.ferramentas-track');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        let autoScroll;
-        const scrollSpeed = 1;
+    // ── Info da categoria ─────────────────────────────────────────────
+    function atualizarCatInfo(cat) {
+      const info = categoriaInfo[cat];
+      document.getElementById('catInfoTitulo').textContent = info ? info.titulo : '';
+      document.getElementById('catInfoTexto').textContent  = info ? info.texto  : '';
+    }
 
-        function startAutoScroll() {
-          autoScroll = setInterval(() => {
-            track.scrollLeft += scrollSpeed;
-            if (track.scrollLeft >= track.scrollWidth / 2) {
-              track.scrollLeft = 0;
-            }
-          }, 20);
-        }
+    // ── Renderiza painéis ─────────────────────────────────────────────
+    const categorias = ['api', 'academico', 'pessoal'];
+    atualizarCatInfo('api');
 
-        function stopAutoScroll() {
-          clearInterval(autoScroll);
-        }
+    categorias.forEach(function(cat) {
+      const painelEl = document.createElement('div');
+      painelEl.className = 'proj-painel' + (cat === 'api' ? ' ativo' : '');
+      painelEl.dataset.categoria = cat;
 
-        startAutoScroll();
+      const periodos = getPeriodosOrdenados(cat);
+      if (periodos.length === 0) { container.appendChild(painelEl); return; }
 
-        // Pausa ao passar o mouse
-        track.addEventListener('mouseenter', stopAutoScroll);
-        track.addEventListener('mouseleave', startAutoScroll);
+      const timeline = document.createElement('div');
+      timeline.className = 'proj-timeline';
 
-        // --- Arraste com o mouse ---
-        track.addEventListener('mousedown', (e) => {
-          isDown = true;
-          track.classList.add('active');
-          stopAutoScroll();
-          startX = e.pageX - track.offsetLeft;
-          scrollLeft = track.scrollLeft;
-        });
+      let idxGlobal = 0; // contador global — não reinicia por período
 
-        track.addEventListener('mouseleave', () => {
-          isDown = false;
-          track.classList.remove('active');
-          startAutoScroll();
-        });
-
-        track.addEventListener('mouseup', () => {
-          isDown = false;
-          track.classList.remove('active');
-          startAutoScroll();
+      periodos.forEach(function(periodo) {
+        const projDosPeriodo = getPorCategoria(cat).filter(function(p) {
+          return p.periodo === periodo;
         });
 
-        track.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - track.offsetLeft;
-          const walk = (x - startX) * 2;
-          track.scrollLeft = scrollLeft - walk;
-        });
+        const grupo = document.createElement('div');
+        grupo.className = 'proj-periodo-grupo';
 
-        // --- Toque no celular ---
-        track.addEventListener('touchstart', (e) => {
-          isDown = true;
-          stopAutoScroll();
-          startX = e.touches[0].pageX - track.offsetLeft;
-          scrollLeft = track.scrollLeft;
-        });
+        const label = document.createElement('div');
+        label.className = 'proj-periodo-label';
+        label.textContent = periodo;
+        grupo.appendChild(label);
 
-        track.addEventListener('touchend', () => {
-          isDown = false;
-          startAutoScroll();
-        });
+        const cardsEl = document.createElement('div');
+        cardsEl.className = 'proj-cards';
 
-        track.addEventListener('touchmove', (e) => {
-          if (!isDown) return;
-          const x = e.touches[0].pageX - track.offsetLeft;
-          const walk = (x - startX) * 2;
-          track.scrollLeft = scrollLeft - walk;
-        });
-      </script>
+        projDosPeriodo.forEach(function(proj) {
+          const item = document.createElement('div');
+          item.className = 'proj-timeline-item';
+          item.dataset.slug = proj.slug;
 
-      <script>
-        const projetos = {
-          api2: {
-            img: 'static/imagem/imagens/proj_2_api.jpg',
-            titulo: 'Sistema para Gestão de Normas Aeronáuticas',
-            subtitulo: 'API · Aprendizado por Projeto Integrador | 2º sem · FATEC',
-            desc: 'Projeto acadêmico desenvolvido em parceria com uma empresa do setor aeroespacial e de defesa da região. O sistema resolve um problema real: a dificuldade de localizar e gerenciar a grande quantidade de normas técnicas utilizadas por engenheiros na elaboração de projetos aeronáuticos. A plataforma web permite centralizar e organizar requisitos normativos com filtragem avançada por código, categoria, órgão e palavra-chave, controle de acesso por níveis de permissão e com histórico de alterações. O projeto segue metodologia ágil com sprints, backlog priorizado, DoR e DoD definidos, e versionamento estruturado por branches.',
-            subdesc: 'Atuação como DevTeam · FrontEnd: contribuindo no desenvolvimento de componentes React e interfaces responsivas, desenvolvimento de Layout Base (Template), navegação lateral com ACL (Access Control List) e painel operacional com lógica de estados de aprovação',
-            tags: ['DevTeam · FrontEnd', 'HTML', 'CSS', 'React', 'JavaScript', 'Node.js', 'Python', 'Flask', 'MySQL', 'Docker', 'AWS', 'Figma', 'Jira', 'GitHub'],
-            link: 'https://janosys-aeroespacial.vercel.app'
-          },
-          cli: {
-            img: 'static/imagem/imagens/proj_1_cli.jpg',
-            titulo: 'Sistema de Gestão de Produção de Aeronaves',
-            subtitulo: 'CLI · Interface de Linha de Comando | 2º sem · FATEC',
-            desc: 'O Aerocode é um sistema desenvolvido em TypeScript como avaliação acadêmica individual. Inspirado no ambiente operacional de empresas aeronáuticas como a Embraer, o sistema simula o processo completo de produção de aeronaves, do cadastro inicial à entrega final ao cliente, contemplando gerenciamento de aeronaves, peças, etapas de produção, testes e funcionários, além de geração de relatórios por aeronave. A arquitetura foi organizada em camadas — models, services e cli — com persistência automática de dados em arquivos JSON e controle de acesso por três níveis de permissão: Operador, Engenheiro e Administrador.',
-            tags: ['TypeScript', 'Programação Orientada a Objetos', 'Encapsulamento', 'Modularização', 'Autenticação e controle de acesso', 'Diagrama UML'],
-            link: 'https://github.com/Costa-Wagner/AV1'
-          },
-          api1: {
-            img: 'static/imagem/imagens/proj_1_api.jpg',
-            titulo: 'Sistema para visualização de Dados do Censo 2010/2022',
-            subtitulo: 'API · Aprendizado por Projeto Integrador | 1º sem · FATEC',
-            desc: 'Projeto acadêmico com o objetivo de desenvolver uma solução digital para facilitar a visualização e análise dos dados do Censo 2010/2022, fornecendo ao município subsídios para decisões de alocação de recursos municipais.',
-            subdesc: 'Atuação como Product Owner: responsável pela interface com o cliente, levantamento e priorização de requisitos, gestão do backlog e acompanhamento das entregas via Jira.',
-            tags: ['Product Owner', 'HTML', 'CSS', 'Python', 'Flask', 'Pandas', 'Plotly', 'Vercel', 'Docker', 'AWS', 'Figma', 'Jira', 'GitHub', 'GoogleColab'
-            ],
-            link: 'https://janosysapi1.vercel.app/'
-          },
-          pessoal: {
-            img: 'static/imagem/imagens/proj_2_site.jpg',
-            titulo: 'Site Particular',
-            subtitulo: '1º sem · FATEC',
-            desc: 'Projeto acadêmico voltado ao desenvolvimento de habilidades em criação de sites pessoais, explorando conceitos de desenvolvimento web, experiência do usuário e design digital.',
-            tags: ['HTML5', 'CSS', 'JavaScript', 'Bootstrap', 'Vercel'],
-            link: 'https://ws-start-ten.vercel.app/'
+          const slotEsq = document.createElement('div');
+          slotEsq.className = 'proj-timeline-slot-esq';
+
+          const dot = document.createElement('div');
+          dot.className = 'proj-timeline-dot';
+
+          const slotDir = document.createElement('div');
+          slotDir.className = 'proj-timeline-slot-dir';
+
+          const card = criarCard(proj);
+
+          // Contador global: par → direita | ímpar → esquerda
+          if (idxGlobal % 2 === 0) {
+            slotDir.appendChild(card);
+          } else {
+            slotEsq.appendChild(card);
           }
-        };
+          idxGlobal++;
 
-        function abrirModal(id) {
-          const p = projetos[id];
-          document.getElementById('modalImg').src = p.img;
-          document.getElementById('modalTitulo').textContent = p.titulo;
-          document.getElementById('modalSubtitulo').textContent = p.subtitulo || '';
-          document.getElementById('modalDesc').textContent = p.desc;
-          document.getElementById('modalSubdesc').textContent = p.subdesc;
-          document.getElementById('modalLink').href = p.link;
-          document.getElementById('modalTags').innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
-          document.getElementById('modalOverlay').classList.add('open');
+          item.appendChild(slotEsq);
+          item.appendChild(dot);
+          item.appendChild(slotDir);
+          cardsEl.appendChild(item);
+        });
+
+        grupo.appendChild(cardsEl);
+        timeline.appendChild(grupo);
+      });
+
+      painelEl.appendChild(timeline);
+      container.appendChild(painelEl);
+    });
+
+    // ── Cria card-1 ───────────────────────────────────────────────────
+    function criarCard(proj) {
+      const card = document.createElement('div');
+      card.className = 'proj-card';
+      card.dataset.slug = proj.slug;
+      card.innerHTML =
+        '<div class="proj-card-nome">' + proj.nome + '</div>' +
+        '<div class="proj-card-subtitulo">' + proj.subtitulo + '</div>' +
+        '<span class="proj-card-periodo">' + proj.periodo + ' · DSM</span>' +
+        (proj.funcao ? ' <span class="proj-card-funcao">' + proj.funcao + '</span>' : '') +
+        '<p class="proj-card-descricao">' + proj.descricao + '</p>' +
+        '<span class="proj-card-btn">Ver projeto</span>';
+
+      card.addEventListener('click', function() {
+        if (slugAtivo === proj.slug && painel.classList.contains('aberto')) {
+          fecharPainel(); return;
         }
+        abrirPainel(proj.slug, card);
+      });
+      return card;
+    }
 
-        function fecharModal(e) {
-          if (!e || e.target === document.getElementById('modalOverlay')) {
-            document.getElementById('modalOverlay').classList.remove('open');
-          }
-        }
-      </script>
+    // ── Abre card-2 ───────────────────────────────────────────────────
+    function abrirPainel(slug, card) {
+      const p = getPorSlug(slug);
+      if (!p) return;
 
-  </body>
+      if (cardAtivo) {
+        cardAtivo.classList.remove('ativo');
+        const prevItem = cardAtivo.closest('.proj-timeline-item');
+        if (prevItem) prevItem.classList.remove('ativo');
+      }
+      cardAtivo = card;
+      card.classList.add('ativo');
+      const item = card.closest('.proj-timeline-item');
+      if (item) item.classList.add('ativo');
+      slugAtivo = slug;
+
+      const catLabel = { api: 'API · Integrador', academico: 'Acadêmico', pessoal: 'Pessoal' };
+      document.getElementById('modalMeta').textContent =
+        (catLabel[p.categoria] || p.categoria) + ' · ' + p.periodo + ' · DSM';
+      document.getElementById('modalNome').textContent      = p.nome;
+      document.getElementById('modalSubtitulo').textContent = p.subtitulo;
+
+      const badgesEl = document.getElementById('modalBadges');
+      badgesEl.innerHTML = '';
+      if (p.funcao) {
+        const b = document.createElement('span');
+        b.className = 'proj-modal-badge funcao';
+        b.textContent = p.funcao;
+        badgesEl.appendChild(b);
+      }
+      p.stack.forEach(function(s) {
+        const b = document.createElement('span');
+        b.className = 'proj-modal-badge';
+        b.textContent = s;
+        badgesEl.appendChild(b);
+      });
+
+      const ctxEl      = document.getElementById('modalContexto');
+      const ctxDivider = document.getElementById('modalCtxDivider');
+      ctxEl.innerHTML  = '';
+      if (p.empresa) {
+        ctxEl.innerHTML +=
+          '<div class="proj-modal-ctx-item"><div class="proj-modal-ctx-label">Empresa parceira</div>' +
+          '<div class="proj-modal-ctx-valor">' + p.empresa + '</div></div>';
+      }
+      if (p.metodologia) {
+        ctxEl.innerHTML +=
+          '<div class="proj-modal-ctx-item"><div class="proj-modal-ctx-label">Metodologia</div>' +
+          '<div class="proj-modal-ctx-valor">' + p.metodologia + '</div></div>';
+      }
+      const temCtx = ctxEl.innerHTML !== '';
+      ctxEl.style.display      = temCtx ? 'flex' : 'none';
+      ctxDivider.style.display = temCtx ? ''     : 'none';
+
+      document.getElementById('modalDescricao').textContent = p.descricao;
+      document.getElementById('modalProblema').textContent  = p.problema;
+      document.getElementById('modalSolucao').textContent   = p.solucao;
+
+      const atuacaoBloco   = document.getElementById('modalAtuacaoBloco');
+      const atuacaoDivider = document.getElementById('modalAtuacaoDivider');
+      if (p.atuacao) {
+        document.getElementById('modalAtuacao').textContent = p.atuacao;
+        atuacaoBloco.style.display   = '';
+        atuacaoDivider.style.display = '';
+      } else {
+        atuacaoBloco.style.display   = 'none';
+        atuacaoDivider.style.display = 'none';
+      }
+
+      document.getElementById('modalStack').innerHTML =
+        p.stack.map(function(s) { return '<span>' + s + '</span>'; }).join('');
+
+      const linksEl = document.getElementById('modalLinks');
+      linksEl.innerHTML = '';
+      if (p.links && p.links.github) {
+        linksEl.innerHTML +=
+          '<a href="' + p.links.github + '" target="_blank" class="proj-modal-link primario">GitHub</a>';
+      }
+      if (p.links && p.links.deploy) {
+        linksEl.innerHTML +=
+          '<a href="' + p.links.deploy + '" target="_blank" class="proj-modal-link secundario">Ver deploy</a>';
+      }
+
+      painel.classList.add('aberto');
+      area.classList.add('card2-aberto');
+      painel.scrollTop = 0;
+    }
+
+    // ── Fecha card-2 ──────────────────────────────────────────────────
+    function fecharPainel() {
+      painel.classList.remove('aberto');
+      area.classList.remove('card2-aberto');
+      if (cardAtivo) {
+        cardAtivo.classList.remove('ativo');
+        const item = cardAtivo.closest('.proj-timeline-item');
+        if (item) item.classList.remove('ativo');
+        cardAtivo = null;
+      }
+      slugAtivo = null;
+    }
+
+    btnFechar.addEventListener('click', fecharPainel);
+
+    document.addEventListener('click', function(e) {
+      if (!painel.classList.contains('aberto')) return;
+      if (painel.contains(e.target)) return;
+      if (e.target.closest('.proj-card')) return;
+      fecharPainel();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') fecharPainel();
+    });
+
+    // ── Troca tabs ────────────────────────────────────────────────────
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabs.forEach(function(t) { t.classList.remove('ativo'); });
+        this.classList.add('ativo');
+        const cat = this.dataset.categoria;
+        atualizarCatInfo(cat);
+        document.querySelectorAll('.proj-painel').forEach(function(p) {
+          p.classList.toggle('ativo', p.dataset.categoria === cat);
+        });
+        fecharPainel();
+      });
+    });
+
+    // ── Nav ativo + ano ───────────────────────────────────────────────
+    const current = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.navbar .nav-link').forEach(function(link) {
+      if (link.getAttribute('href') === current) link.classList.add('active');
+    });
+    const anoEl = document.getElementById('ano');
+    if (anoEl) anoEl.textContent = new Date().getFullYear();
+  });
+  </script>
+
+</body>
 </html>
